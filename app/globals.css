@@ -3,6 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Snake Game Colors */
+  --snake-head: #10b981;
+  --snake-body-start: #34d399;
+  --snake-body-end: #86efac;
+  --food-color: #ef4444;
+  --board-bg: #f8fafc;
+  --grid-line: #e2e8f0;
+  --game-shadow: rgba(0, 0, 0, 0.1);
+  --accent-color: #3b82f6;
 }
 
 @theme inline {
@@ -16,11 +26,143 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --snake-head: #059669;
+    --snake-body-start: #10b981;
+    --snake-body-end: #6ee7b7;
+    --food-color: #dc2626;
+    --board-bg: #1e293b;
+    --grid-line: #334155;
+    --game-shadow: rgba(0, 0, 0, 0.3);
+    --accent-color: #60a5fa;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+}
+
+/* Snake Game Animations */
+@keyframes pulse-food {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes score-bump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes game-over-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Game Board Styles */
+.game-board {
+  background: linear-gradient(135deg, var(--board-bg) 0%, #ffffff 100%);
+  box-shadow: 
+    inset 0 0 0 1px var(--grid-line),
+    0 10px 25px -5px var(--game-shadow),
+    0 10px 10px -5px var(--game-shadow);
+  border-radius: 12px;
+  position: relative;
+}
+
+.game-board::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(var(--grid-line) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border-radius: 12px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .game-board {
+    background: linear-gradient(135deg, var(--board-bg) 0%, #0f172a 100%);
+  }
+}
+
+/* Snake Cells */
+.snake-head {
+  background: radial-gradient(circle at 30% 30%, var(--snake-head), #065f46);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.snake-body {
+  background: linear-gradient(45deg, var(--snake-body-start), var(--snake-body-end));
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.food-cell {
+  background: radial-gradient(circle, var(--food-color), #b91c1c);
+  animation: pulse-food 1.5s ease-in-out infinite;
+  box-shadow: 
+    0 0 10px rgba(239, 68, 68, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.score-animation {
+  animation: score-bump 0.3s ease-out;
+}
+
+.slide-in-animation {
+  animation: slide-in 0.5s ease-out;
+}
+
+.game-over-animation {
+  animation: game-over-shake 0.5s ease-in-out;
+}
+
+/* Button Enhancements */
+.game-button {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.game-button:hover::before {
+  left: 100%;
+}
+
+.game-button:active {
+  transform: scale(0.98);
 }
