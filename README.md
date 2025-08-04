@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 贪吃蛇游戏 🐍
 
-## Getting Started
+**中文** | [English](./README_EN.md)
 
-First, run the development server:
+这是一个使用 [Next.js](https://nextjs.org) 构建的经典贪吃蛇游戏项目。
+
+## 游戏特性
+
+- 🎮 经典贪吃蛇游戏玩法
+- 🎯 实时分数显示
+- ⌨️ 键盘控制（方向键或 WASD）
+- 📱 响应式设计，支持移动端
+- 🎨 现代化 UI 设计
+
+## 开始使用
+
+首先，运行开发服务器：
 
 ```bash
 npm run dev
-# or
+# 或者
 yarn dev
-# or
+# 或者
 pnpm dev
-# or
+# 或者
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看游戏。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 游戏控制
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **方向键** 或 **WASD** - 控制蛇的移动方向
+- **空格键** - 暂停/继续游戏
+- **R键** - 重新开始游戏
 
-## Learn More
+## 技术栈
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js 15](https://nextjs.org/) - React 框架
+- [TypeScript](https://www.typescriptlang.org/) - 类型安全
+- [Tailwind CSS](https://tailwindcss.com/) - 样式框架
+- [React](https://reactjs.org/) - UI 库
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 项目结构
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+next-snake/
+├── app/                  # Next.js App Router
+├── components/           # React 组件
+├── lib/                  # 工具函数
+├── types/               # TypeScript 类型定义
+└── public/              # 静态资源
+```
 
-## Deploy on Vercel
+## 部署
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+推荐使用 [Vercel 平台](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) 部署，这是 Next.js 创作者提供的平台。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+查看 [Next.js 部署文档](https://nextjs.org/docs/app/building-your-application/deploying) 了解更多详情。
